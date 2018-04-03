@@ -22,12 +22,12 @@ contract AllowanceRegistry is AllowanceRegistryInterface, Ownable {
 
     function allowUser(address _user) public onlyRegistrar {
         allowed[_user] = true;
-        emit Allow(msg.sender, _user, now);
+        emit Allow(msg.sender, _user);
     }
 
     function denyUser(address _user) public onlyRegistrar {
         allowed[_user] = false;
-        emit Deny(msg.sender, _user, now);
+        emit Deny(msg.sender, _user);
     }
 
 
@@ -35,8 +35,8 @@ contract AllowanceRegistry is AllowanceRegistryInterface, Ownable {
         return allowed[_user];
     }
 
-    event Allow(address indexed _registar, address indexed _user, uint256 _timestamp); 
-    event Deny (address indexed _registar, address indexed _user, uint256 _timestamp); 
+    event Allow(address indexed _registar, address indexed _user); 
+    event Deny (address indexed _registar, address indexed _user); 
 
 
 }
